@@ -9,7 +9,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh 'find . -name tests.py -exec py.test -v {} --connection=ansible --hosts=\'web*\' --ansible-inventory=hosts.ini \\;'
+        sh 'find . -name tests.py -exec \'*_test.py\' -v {} --connection=ansible --hosts=\'web*\' --ansible-inventory=hosts.ini --junit-xml=$(pwd)/{}.xml \\;'
       }
     }
   }
