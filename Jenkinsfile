@@ -11,6 +11,7 @@ pipeline {
       steps {
         sh 'find . -name \'*_test.py\' -exec py.test -v {} --connection=ansible --hosts=\'web*\' --ansible-inventory=hosts.ini --junit-xml={}.xml \\;'
         sh 'ls -al'
+        sh 'echo "PIPELINE IS DONE"'
       }
     }
   }
