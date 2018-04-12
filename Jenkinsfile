@@ -9,7 +9,7 @@ pipeline {
     }
     stage('Test Middleware') {
       steps {
-        sh 'find . -name tests.py -exec \'*_test.py\' -v {} --connection=ansible --hosts=\'web*\' --ansible-inventory=hosts.ini --junit-xml={}.xml \\;'
+        sh 'find . -name \'*_tests.py\' -exec py.test -v {} --connection=ansible --hosts=\'web*\' --ansible-inventory=hosts.ini --junit-xml={}.xml \\;'
         sh 'ls -al'
       }
     }
